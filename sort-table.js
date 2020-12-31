@@ -148,7 +148,18 @@ sortTable.date = function(Cell) {
  * @returns {Number}
  */
 sortTable.number = function(Cell) {
-    return Number.parseFloat(sortTable.stripTags(Cell.innerHTML).replace(/[^-\d,]/g, ''));
+    return Number(sortTable.stripTags(Cell.innerHTML).replace(/[^-\d,]/g, ''));
+};
+
+/**
+ * Helper function that converts a table cell (TD) to a comparable value
+ * Converts innerHTML to a JS Number (DE) object
+ *
+ * @param Cell A TD DOM object
+ * @returns {Number}
+ */
+sortTable.number_DE = function(Cell) {
+    return Number.parseFloat(sortTable.stripTags(Cell.innerHTML).replace(/\./g,'').replace(',', '.'));
 };
 
 /**
